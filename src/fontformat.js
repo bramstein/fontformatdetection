@@ -91,6 +91,8 @@ goog.scope(function () {
           formats.push('embedded-opentype');
         }
 
+        document.body.removeChild(ruler);
+
         return formats;
       });
     }
