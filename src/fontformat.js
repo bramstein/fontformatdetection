@@ -39,7 +39,7 @@ goog.scope(function () {
   /**
    * @return {Promise.<!Array.<string>>}
    */
-  FontFormat.prototype.supports = function () {
+  FontFormat.prototype.detect = function () {
     if (document['documentMode'] && document['documentMode'] < 9) {
       return Promise.resolve(['embedded-opentype']);
     }

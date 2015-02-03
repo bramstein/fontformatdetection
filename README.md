@@ -10,7 +10,7 @@ This library detects support for @font-face font formats without resorting to us
 
     var fontformat = new FontFormat();
 
-    fontformat.supports().then(function (formats) {
+    fontformat.detect().then(function (formats) {
       // formats = ['opentype', 'woff', 'woff2']
     });
 
