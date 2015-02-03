@@ -40,7 +40,9 @@ goog.scope(function () {
    * @return {Promise.<!Array.<string>>}
    */
   FontFormat.prototype.detect = function () {
-    if (document['documentMode'] && document['documentMode'] < 9) {
+    // This is not truly a feature test, but since IE6-8 only support
+    // EOT it'll do.
+    if (document.attachEvent && !document.addEventListener) {
       return Promise.resolve(['embedded-opentype']);
     }
 
@@ -87,6 +89,8 @@ goog.scope(function () {
           formats = ['opentype'];
         }
 
+        // IE9 and above also support EOT (though other formats
+        // are preferred).
         if (document['documentMode']) {
           formats.push('embedded-opentype');
         }
