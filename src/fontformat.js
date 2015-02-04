@@ -62,8 +62,25 @@ goog.scope(function () {
 
       head.appendChild(style);
 
-      this.font = new FontFaceObserver('__fff__', {}).available('@').then(function (width) {
-        var formats = [];
+      this.font = new FontFaceObserver('__fff__', {}).check('@').then(function () {
+        var ruler = document.createElement('span'),
+            formats = [];
+
+        ruler.textContent = '@';
+        ruler.style.cssText = 'font-family:__fff__;' +
+                              'display:inline-block;' +
+                              'position:absolute;' +
+                              'visibility:hidden;' +
+                              'margin:0;' +
+                              'padding:0;' +
+                              'top:0;' +
+                              'whitespace:nowrap;' +
+                              'max-height:10px;' +
+                              'font-size:100px;';
+
+        document.body.appendChild(ruler);
+
+        var width = ruler.offsetWidth;
 
         if (width === 300) {
           formats = ['woff2', 'woff', 'opentype'];

@@ -5,7 +5,7 @@
   "author": "Bram Stein",
   "license": "BSD",
   "dependencies": {
-    "fontfaceobserver": "=1.2.3",
+    "fontfaceobserver": "=1.1.0",
     "promis": "^1.0.1"
   },
   "devDependencies": {
