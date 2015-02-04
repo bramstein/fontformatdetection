@@ -47,7 +47,8 @@ goog.scope(function () {
     }
 
     if (this.font === null) {
-      var style = document.createElement('style');
+      var style = document.createElement('style'),
+          head = document.getElementsByTagName('head')[0];
 
       style.appendChild(document.createTextNode(
         '@font-face{' +
@@ -59,7 +60,7 @@ goog.scope(function () {
         '}'
       ));
 
-      document.head.appendChild(style);
+      head.appendChild(style);
 
       this.font = new FontFaceObserver('__fff__', {}).available('@').then(function (width) {
         var formats = [];
@@ -77,6 +78,8 @@ goog.scope(function () {
         if (document['documentMode']) {
           formats.push('embedded-opentype');
         }
+
+        head.removeChild(style);
 
         return formats;
       });
